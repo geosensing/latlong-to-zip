@@ -2,13 +2,13 @@
 
 #### Some Reverse Geocoding Options
 
-* [Open Street Map](http://www.openstreetmap.org/) and [https://github.com/twain47/Nominatim](https://github.com/twain47/Nominatim)
+* [Open Street Map](http://www.openstreetmap.org/) and [Nominatim](https://github.com/twain47/Nominatim)
 * [AskGeo](http://askgeo.com/)
 * [Google](https://developers.google.com/maps/)
 
 #### How do the data compare across different services?
 
-DiffLatLong2ZipServicesCompared.xlxs compares lat/long to zip code mapping for 300 locations from [Google](https://developers.google.com/maps/), [AskGeo](http://askgeo.com/), and [OSM](http://www.openstreetmap.org/).
+[DiffLatLong2ZipServicesCompared.xlxs](https://github.com/soodoku/Lat-Long-to-Zip/blob/master/DiffLatLong2ZipServicesCompared.xlsx) compares lat/long to zip code mapping for 300 locations from [Google](https://developers.google.com/maps/), [AskGeo](http://askgeo.com/), and [OSM](http://www.openstreetmap.org/).
 
 ##### Notes for AskGeo Script
 
