@@ -1,16 +1,17 @@
-### Convert Lat/Long to ZIP code by Google Maps (Reverse) Geocoding API
+### Get zip codes for Lat/Longs Using Google Maps Reverse Geocoding API
 
 Takes a csv file with at least the following 3 columns: 'uniqid', 'lat', and 'long'  and produces a csv with zip codes appended.
 
-#### Requirements
+#### Running the Script
+
+##### Requirements
 - Python 2.7.5
 - pygeocoder (https://pypi.python.org/pypi/pygeocoder)
 
-#### Usage
+##### Usage: 
+<pre><code>latlong2zip.py [options] input_file</code></pre>
 
-Usage: <pre><code>latlong2zip.py [options] input_file</code></pre>
-
-Command line options:
+##### Command line options:
 <pre><code>
 Options:
   -h, --help            show this help message and exit
@@ -20,8 +21,7 @@ Options:
                         CSV Output file name (default: output.csv)
 </code></pre>
 
-Example:
-
+##### Example:
 <pre> python latlong2zip.py input.csv</pre>
 
 The script will produce 'output.csv' with appends a 'zipcode' column to columns in input.csv.
