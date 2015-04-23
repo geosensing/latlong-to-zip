@@ -1,11 +1,11 @@
 ### Convert Large number of Lat/Longs to ZIP code using AskGeo API
 
-####DATABASES & TABLES
+####Database and Tables
 
-The script creates 2 databases:-
+The script creates 2 databases:
 
-1) Main database file: askgeo.db contains table "UsZcta2010"
-
+1. Main database file: askgeo.db contains table "UsZcta2010"
+<pre>
 UsZcta2010 (
         id      INTEGER PRIMARY KEY AUTOINCREMENT,
         lat     REAL,
@@ -14,13 +14,15 @@ UsZcta2010 (
         json_id INTEGER,
         UNIQUE ( lat, long )
         )
+</pre>
 
-2) UsZcta2010.db contains table "json" use for store all JSON reply by AskGeo for each request.
-
+2. UsZcta2010.db contains table "json" use for store all JSON reply by AskGeo for each request.
+<pre>
 json (
         id   INTEGER    PRIMARY KEY AUTOINCREMENT,
         points TEXT,
         json TEXT)   
+</pre>
 
 NOTE THAT: This database quite large (12GB for 2.8 millions request)
 
