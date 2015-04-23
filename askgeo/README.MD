@@ -1,12 +1,7 @@
-Convert Large number of Lat/Longs to ZIP code using AskGeo API
-================================================================
+### Convert Large number of Lat/Longs to ZIP code using AskGeo API
 
-REQUIREMENTS
-============
-Python 2.7.5
+####DATABASES & TABLES
 
-DATABASES & TABLES
-=====================
 The script creates 2 databases:-
 
 1) Main database file: askgeo.db contains table "UsZcta2010"
@@ -29,10 +24,11 @@ json (
 
 NOTE THAT: This database quite large (12GB for 2.8 millions request)
 
-HOW TO RUN
-==========
+####How to Run
+
 The script command line options shown below :-
 
+<pre><code>
 Usage: latlong2zip.py [options] <input file>
 
 Options:
@@ -41,17 +37,18 @@ Options:
   -o OUTPUT, --output=OUTPUT
                         Output file with Zip code
   -?, --help
+</code></pre>
 
-USAGE EXAMPLE
--------------
-1) Import new lat/long to database
+#### Example
 
-    python latlong2csv.py -i contribDB_1980.csv
+1. Import new lat/long to database
 
-2) Query ZIP code from AskGeo for new lat/long in database
+<pre><code>    python latlong2csv.py -i contribDB_1980.csv</code></pre>
 
-    python latlong2csv.py -a
+2. Query ZIP code from AskGeo for new lat/long in database
 
-3) Export (append) ZIP code to input file and save to output file
+<pre><code>     python latlong2csv.py -a</code></pre>
+
+3. Export (append) ZIP code to input file and save to output file
 
     python latlong2csv.py -o contribDB_1980_zipcode.csv contribDB_1980.csv
