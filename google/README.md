@@ -1,41 +1,29 @@
-Convert Lat/Long to ZIP code by Google Maps (Reverse) Geocoding API
-================================================================================
+### Convert Lat/Long to ZIP code by Google Maps (Reverse) Geocoding API
 
-REQUIREMENTS
-============
+Takes a csv file with at least the following 3 columns: 'uniqid', 'lat', and 'long'  and produces a csv with zip codes appended.
+
+#### Requirements
 - Python 2.7.5
 - pygeocoder (https://pypi.python.org/pypi/pygeocoder)
 
-INPUT FILES AND RESTRICTIONS
-============================
-Input CSV file must be contains 3 minimum columns :- 'uniqid', 'lat', and 'long'
+#### Usage
 
-INSTRUCTION
-===========
+Usage: <pre><code>latlong2zip.py [options] input_file</code></pre>
 
-Available command line options:-
-
-latlong2zip.py r1 (2013/08/28)
-
-Usage: latlong2zip.py [options] <input file>
-
+Command line options:
+<pre><code>
 Options:
   -h, --help            show this help message and exit
   -r, --refresh         Refresh query and update Lat/Lon by Google Maps
                         Geocoding API
   -o OUTFILE, --outfile=OUTFILE
                         CSV Output file name (default: output.csv)
-                                                
-FOR EXAMPLES :-
- # ./latlong2zip.py input.csv
+</code></pre>
 
-The 'output.csv' will be created, with an additional column 'zipcode' 
-filled by ZIP code belong to each 'lat' and 'long' columns 
+Example:
 
-LIMITATIONS
-===========
-The script will be terminated with "ERROR: Google Geocoding API usage over limit" due to
-Google Maps (Reverse) Geocoding APIs usage limit about 2,500 query/IP/day
+<pre> python latlong2zip.py input.csv</pre>
 
-Ref: https://developers.google.com/maps/documentation/geocoding/#Limits
+The script will produce 'output.csv' with appends a 'zipcode' column to columns in input.csv.
 
+The script will terminate with "ERROR: Google Geocoding API usage over limit" if [Google Maps (Reverse) Geocoding APIs usage limit](https://developers.google.com/maps/documentation/geocoding/#Limits) of 2,500 query/IP/day is exceeded.
