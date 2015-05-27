@@ -8,7 +8,7 @@
 
 #### How do the data compare across different services?
 
-[DiffLatLong2ZipServicesCompared.xlxs](https://github.com/soodoku/Lat-Long-to-Zip/blob/master/DiffLatLong2ZipServicesCompared.xlsx) compares lat/long to zip code mapping for 300 locations from [Google](https://developers.google.com/maps/), [AskGeo](http://askgeo.com/), and [OSM](http://www.openstreetmap.org/).
+[DiffLatLong2ZipServicesCompared.xlxs](DiffLatLong2ZipServicesCompared.xlsx) compares lat/long to zip code mapping for 300 locations from [Google](https://developers.google.com/maps/), [AskGeo](http://askgeo.com/), and [OSM](http://www.openstreetmap.org/).
 
 ##### Notes for AskGeo Script
 
@@ -21,4 +21,4 @@ Google has a rate limitation of 2,500 query/IP/day. The pricing for more extensi
 
 #### License
 
-Scripts are released under the [MIT License](https://github.com/soodoku/Lat-Long-to-Zip/blob/master/License%20for%20Scripts.md).
+Scripts are released under the [MIT License](License%20for%20Scripts.md).
