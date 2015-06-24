@@ -30,6 +30,8 @@ json (
 
 #### Usage
 
+Get started by getting the API Key from GeoNames. Next, add the account information and api_key in the [latlong2zip.cfg](latlong2zip.cfg) file. To run the script:
+
 `latlong2zip.py [options] input_file`
 
 **Command line options**
