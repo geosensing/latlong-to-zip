@@ -14,7 +14,7 @@ Takes a csv with a list of latitudes and longitudes and finds the zip code in wh
 
 [DiffLatLong2ZipServicesCompared.xlxs](DiffLatLong2ZipServicesCompared.xlsx) compares lat/long to zip code mapping for 300 locations from [Google](https://developers.google.com/maps/), [AskGeo](http://askgeo.com/), and [OSM](http://www.openstreetmap.org/).
 
-##### Scripts
+#### Scripts
 
 * [AskGeo Script](askgeo) 
   * The script is tailored for large batch jobs. 
