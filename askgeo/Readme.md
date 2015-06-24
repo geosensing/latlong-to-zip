@@ -49,11 +49,11 @@ Options:
 
 **Examples**
 
-1. Import new lat/long to database
+1. Import new lat/long to database  
 `python latlong2csv.py -i contribDB_1980.csv`
 
-2. Query ZIP code from AskGeo for new lat/long in database
+2. Query ZIP code from AskGeo for new lat/long in database  
 `python latlong2csv.py -a`
 
-3. Export (append) ZIP code to input file and save to output file
+3. Export (append) ZIP code to input file and save to output file  
 `python latlong2csv.py -o contribDB_1980_zipcode.csv contribDB_1980.csv`
