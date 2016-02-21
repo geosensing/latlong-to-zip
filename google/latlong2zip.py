@@ -63,7 +63,7 @@ def main(options, args):
         # Check input file contains minimum columns
         for c in ['uniqid', 'lat', 'long']:
             if c not in fields:
-                print("ERROR: Input file don't have column '%s'" % c)
+                print("ERROR: Input file don't have column '{0!s}'".format(c))
                 return
         if 'zipcode' not in fields:
             fields.append('zipcode')
@@ -85,7 +85,7 @@ def main(options, args):
             lat = float(r['lat']) 
             lon = float(r['long'])
             try:
-                print("Query zipcode for lat = %f, long = %f" % (lat, lon))
+                print("Query zipcode for lat = {0:f}, long = {1:f}".format(lat, lon))
                 zipcode = LatLonToZip(lat, lon)
                 if zipcode == None:
                     zipcode = 'N/A'
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     sys.setdefaultencoding('utf-8')
     sys.stdout = Logger(LOGFILE)
     signal.signal(signal.SIGINT, signal_handler)
-    print("%s r1 (2013/08/28)\n" % (os.path.basename(sys.argv[0])))
+    print("{0!s} r1 (2013/08/28)\n".format((os.path.basename(sys.argv[0]))))
     (options, args) = parse_command_line(sys.argv)
     if len(args) < 2:
         print("Please specific input file (CSV)")
