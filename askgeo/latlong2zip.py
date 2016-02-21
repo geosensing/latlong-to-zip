@@ -75,7 +75,7 @@ def import_file(options):
     dbcur.execute('''select count(id) from UsZcta2010''')
     r = dbcur.fetchone()
     before = r[0]
-    logging.info("Rows count before import: %d" % (before))
+    logging.info("Rows count before import: {0:d}".format((before)))
 
     f = open(options.input)
     reader = csv.DictReader(f)
@@ -83,12 +83,12 @@ def import_file(options):
     loc = set()
     for r in reader:
         if i % 1000 == 0:
-            logging.info("Importing...%d" % i)
+            logging.info("Importing...{0:d}".format(i))
         i += 1
         loc.add((r['latitude'], r['longitude']))
         dbcur.execute('''insert or ignore into UsZcta2010 (lat, long) values
                          (?, ?)''', (r['latitude'], r['longitude']))
-    logging.info("Import finished (total: %d, unique: %d)" % (i, len(loc)))
+    logging.info("Import finished (total: {0:d}, unique: {1:d})".format(i, len(loc)))
     f.close()
 
     dbconn.commit()
@@ -97,8 +97,8 @@ def import_file(options):
     dbcur.execute('''select count(id) from UsZcta2010''')
     r = dbcur.fetchone()
     after = r[0]
-    logging.info("Rows count after import: %d" % (after))
-    logging.info("Imported %d new lat/long" % (after - before))
+    logging.info("Rows count after import: {0:d}".format((after)))
+    logging.info("Imported {0:d} new lat/long".format((after - before)))
     dbconn.close()
 
 
@@ -127,9 +127,9 @@ def askgeo2zip(options):
         if count == 0:
             logging.info('Completed!!!')
             break
-        logging.info("ID: %d" % (rows[0][0]))
-        points_list = ','.join(['(%s,%s)' % (r[1], r[2]) for r in rows])
-        points = '%3B'.join(['%s%%2C%s' % (r[1], r[2]) for r in rows])
+        logging.info("ID: {0:d}".format((rows[0][0])))
+        points_list = ','.join(['({0!s},{1!s})'.format(r[1], r[2]) for r in rows])
+        points = '%3B'.join(['{0!s}%2C{1!s}'.format(r[1], r[2]) for r in rows])
         error = 0
         while True:
             try:
@@ -140,25 +140,24 @@ def askgeo2zip(options):
                 j = json.loads(json_str)
                 if j['code'] != 0:
                     error += 1
-                    logging.warn("AskGeo return error code (%d): %d, %s" %
-                                 (error, j['code'], j['message']))
+                    logging.warn("AskGeo return error code ({0:d}): {1:d}, {2!s}".format(error, j['code'], j['message']))
                     if error > options.max_errors:
                         logging.error("Maximum (%d) AskGeo return error "
                                       "code!!!" % (error))
                         terminate = True
                         break
-                    logging.warn("Sleep for %d seconds" % (error * error * 5))
+                    logging.warn("Sleep for {0:d} seconds".format((error * error * 5)))
                     time.sleep(error * error * 5)
                     continue
             except Exception as e:
                 error += 1
-                logging.warn("AskGeo request error (%d): %s" % (error, e))
+                logging.warn("AskGeo request error ({0:d}): {1!s}".format(error, e))
                 if error > options.max_errors:
-                    logging.error('Maximum (%d) AskGeo request error!!!' %
-                                  (error))
+                    logging.error('Maximum ({0:d}) AskGeo request error!!!'.format(
+                                  (error)))
                     terminate = True
                     break
-                logging.warn("Sleep for %d seconds" % (error * error * 5))
+                logging.warn("Sleep for {0:d} seconds".format((error * error * 5)))
                 time.sleep(error * error * 5)
                 continue
             dbcur2.execute('''insert or ignore into json (points, json) values
@@ -170,8 +169,7 @@ def askgeo2zip(options):
                     zipcode = j['data'][i]['UsZcta2010']['ZctaCode']
                 except Exception as e:
                     zipcode = ''
-                    logging.warn("Cannot get zip code for lat/long: (%f, %f)" %
-                                 (r[1], r[2]))
+                    logging.warn("Cannot get zip code for lat/long: ({0:f}, {1:f})".format(r[1], r[2]))
                     pass
                 dbcur.execute('''update UsZcta2010 set zip=?, json_id=? where
                                  id = ?''', (zipcode, json_id, r[0]))
@@ -205,21 +203,21 @@ def addzipcode(options):
     i = 0
     for r in reader:
         if i % 1000 == 0:
-            logging.info("Exporting...(%d)" % i)
+            logging.info("Exporting...({0:d})".format(i))
         zipcode = ''
         if r['latitude'] != '':
             dbcur.execute('''select zip from UsZcta2010 where lat = ? and
                              long = ?''', (r['latitude'], r['longitude']))
             res = dbcur.fetchone()
             if res[0] is None or res[0] == '':
-                logging.warn("No ZIP code for %s, %s" % (r['latitude'],
+                logging.warn("No ZIP code for {0!s}, {1!s}".format(r['latitude'],
                              r['longitude']))
             else:
                 zipcode = res[0]
         r['zipcode'] = zipcode
         writer.writerow(r)
         i += 1
-    logging.info("Export finished (%d)" % i)
+    logging.info("Export finished ({0:d})".format(i))
     f.close()
     o.close()
     dbconn.close()
