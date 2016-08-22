@@ -24,4 +24,4 @@ Takes a csv with a list of latitudes and longitudes and finds the zip code in wh
   * Google has a rate limitation of 2,500 query/IP/day. The pricing for more extensive packages is prohitibitive.
 
 #### License
-Scripts are released under the [MIT License](License.md).
+Scripts are released under the [MIT License](https://opensource.org/licenses/MIT).
