@@ -1,4 +1,4 @@
-### Convert Large number of Lat/Longs to zip codes using AskGeo
+### Convert Large Number of Lat/Longs to ZIP Codes using AskGeo
 
 The script uses the [AskGeo API](https://askgeo.com/) to reverse geocode latitude and longitudes. It is customized for large batch jobs. For instance, the script was used to produce zip codes for [Database on Ideology, Money in Politics, and Elections](http://data.stanford.edu/dime). Database with zip codes is posted on Harvard DVN ([see here](http://dx.doi.org/10.7910/DVN/28957)).
 
